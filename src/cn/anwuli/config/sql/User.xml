@@ -26,11 +26,23 @@
     <id column="ID" jdbcType="INTEGER" property="id"/>
     <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
     <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+    <result column="NICKNAME" jdbcType="VARCHAR" property="nickname"/>
   </resultMap>
 
   <select id="queryUser" parameterType="cn.anwuli.bean.User" resultMap="UserResult">
-    select ID,USERNAME,PASSWORD from USERS where USERNAME=#{username} and PASSWORD=#{password}
+    select ID,USERNAME,PASSWORD,NICKNAME from USERS where USERNAME=#{username} and PASSWORD=#{password}
   </select>
+<!--   <select id="queryUserByName" parameterType="String" resultMap="UserResult">
+    select USERNAME,NICKNAME,PASSWORD from USERS where USERNAME=#{username}
+  </select> -->
+  <!-- 修改用户信息 -->
+  <update id="updateInfo" parameterType="cn.anwuli.bean.User">
+  	update USERS
+  	set NICKNAME=#{nickname},
+ 	PASSWORD=#{password}
+ 	where USERNAME=#{username}
+  </update>
+  
 <!--   <delete id="deleteOne">
   	delete from message where id=#{_parameter}
   </delete>

@@ -8,7 +8,7 @@
 	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>俺屋里</title>
+<title>修改信息</title>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -24,22 +24,22 @@
       </nav>
 
     <div class="container">
-        <h1>每日十词</h1>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                     abandon
-                </h3>
+        <h1>修改信息 <small>anwuli.cn</small></h1>
+		<form action="UpdateInfo.action" method="post">
+			<div class="form-group">
+				<label>用户名</label> 
+				<p class="form-control">wuzijian</p>
             </div>
-            <div class="panel-body">
-                verb.抛弃、遗弃
+            <div class="form-group">
+				<label>昵称</label> 
+				<input name="nickname" type="text" class="form-control" placeholder="${sessionScope.LoginUser.nickname}">
             </div>
-        </div>
-        <div class="btn-group btn-group-lg">
-            <button type="button" class="btn btn-info">上一个</button>
-            <button type="button" class="btn btn-primary">收藏</button>
-            <button type="button" class="btn btn-info">下一个</button>
-        </div>
+			<div class="form-group">
+				<label>密码</label> 
+				<input name="password" type="text" class="form-control" placeholder="${sessionScope.LoginUser.password}">
+            </div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
     </div>
     <br>
     <div class="container">
