@@ -1,5 +1,5 @@
 # HelloWorld
-[每日十词](anwuli.cn:8080/HelloWorld)
+[每日十词](http://anwuli.cn:8080/HelloWorld)
 
 ## 已实现
 * 用户登录
@@ -8,7 +8,7 @@
 * 退出当前账号
 * 显示单词以及点击下一个的功能
 
-##To-Do-List
+## To-Do-List
 * 实现收藏功能
 * 实现隐藏翻译的功能
 * 添加词库
