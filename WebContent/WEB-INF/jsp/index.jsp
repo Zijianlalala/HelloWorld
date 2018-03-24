@@ -28,12 +28,12 @@
         <div class="panel panel-default">
             <div id="word-content" class="panel-heading">
                 <h3 class="panel-title">
-                     abandon
-                </h3>
+<!--                      abandon
+ -->                </h3>
             </div>
             <div id="word-translation" class="panel-body">
-                verb.抛弃、遗弃
-            </div>
+<!--                 verb.抛弃、遗弃
+ -->            </div>
         </div>
         <div class="btn-group btn-group-lg">
             <button type="button" class="btn btn-info">上一个</button>
@@ -56,12 +56,12 @@
         var i = 0;
         $.getJSON("http://localhost:8080/HelloWorld/WordListServlet", function(data){
         result = data;
+        showWord();
         });
-        $(document).ready(showWord);
         $("button#next-word").on('click', function(){
-            showWord()
-            i++;
-            i = i%3;
+      	  	i++;
+      	 	i = i%3;
+            showWord();
         });
         function showWord() {
             $("#word-content").html(result[i].content);
