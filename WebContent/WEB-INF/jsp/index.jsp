@@ -26,19 +26,19 @@
     <div class="container">
         <h1>每日十词</h1>
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div id="word-content" class="panel-heading">
                 <h3 class="panel-title">
                      abandon
                 </h3>
             </div>
-            <div class="panel-body">
+            <div id="word-translation" class="panel-body">
                 verb.抛弃、遗弃
             </div>
         </div>
         <div class="btn-group btn-group-lg">
             <button type="button" class="btn btn-info">上一个</button>
             <button type="button" class="btn btn-primary">收藏</button>
-            <button type="button" class="btn btn-info">下一个</button>
+            <button id="next-word" type="button" class="btn btn-info">下一个</button>
         </div>
     </div>
     <br>
@@ -50,7 +50,24 @@
     </div>
 
 
-
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+    <script>
+        var result;
+        var i = 0;
+        $.getJSON("http://localhost:8080/HelloWorld/WordListServlet", function(data){
+        result = data;
+        });
+        $(document).ready(showWord);
+        $("button#next-word").on('click', function(){
+            showWord()
+            i++;
+            i = i%3;
+        });
+        function showWord() {
+            $("#word-content").html(result[i].content);
+            $("#word-translation").html(result[i].translation);
+        }
+    </script>
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

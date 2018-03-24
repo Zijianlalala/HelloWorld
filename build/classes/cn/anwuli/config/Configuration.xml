@@ -21,6 +21,7 @@
   
   <mappers>
     <mapper resource="cn/anwuli/config/sql/User.xml"/>
+    <mapper resource="cn/anwuli/config/sql/Word.xml"/>
   </mappers>
  
 </configuration>
