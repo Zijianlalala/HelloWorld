@@ -37,7 +37,7 @@
         </div>
         <div class="btn-group btn-group-lg">
             <button type="button" class="btn btn-info">上一个</button>
-            <button type="button" class="btn btn-primary">收藏</button>
+            <button id="mark" type="button" class="btn btn-primary">收藏</button>
             <button id="next-word" type="button" class="btn btn-info">下一个</button>
         </div>
     </div>
@@ -62,11 +62,24 @@
       	  	i++;
       	 	i = i%3;
             showWord();
+            
         });
         function showWord() {
             $("#word-content").html(result[i].content);
             $("#word-translation").html(result[i].translation);
         }
+        /* 点击收藏按钮，发送请求，并disabled按钮 */
+        $('button#mark').on('click', function(){
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/HelloWorld/TestServlet',
+                data: {id : result[i].id},
+                success: function(){
+                    $('button#mark').attr('disabled', 'true');
+                    $('button#mark').html('已收藏');
+                }
+            });
+        });
     </script>
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
