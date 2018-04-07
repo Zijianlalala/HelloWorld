@@ -27,16 +27,15 @@
         <h1>每日十词</h1>
         <div class="panel panel-default">
             <div id="word-content" class="panel-heading">
-                <h3 class="panel-title">
-<!--                      abandon
- -->                </h3>
+                <h3 class="panel-title"></h3>
             </div>
-            <div id="word-translation" class="panel-body">
-<!--                 verb.抛弃、遗弃
- -->            </div>
+            <!-- style="background-color:black" -->
+            <div id="word-translation" class="panel-body" ></div>
         </div>
         <div class="btn-group btn-group-lg">
-            <button type="button" class="btn btn-info">上一个</button>
+            <button id="show-meaning" type="button" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span>显示
+            </button>
             <button id="mark" type="button" class="btn btn-primary">收藏</button>
             <button id="next-word" type="button" class="btn btn-info">下一个</button>
         </div>
@@ -76,7 +75,12 @@
             }
             $("#word-content").html(result[i].content);
             $("#word-translation").html(result[i].translation);
+            $("#word-translation").attr("style", "background-color: black");
         }
+        /* 点击显示按钮，显示当前意思 */
+        $("button#show-meaning").on('click', function(){
+            $("#word-translation").removeAttr("style");
+        });
         /* 点击收藏按钮，发送请求，并disabled按钮 */
         $('button#mark').on('click', function(){
             $.ajax({
