@@ -19,17 +19,22 @@ import cn.anwuli.service.WordService;
 /**
  * Servlet implementation class WordListServlet
  */
-@WebServlet("/WordListServlet")
+@WebServlet("/WordList.action")
 public class WordListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession();
-		int userId = ((User) session.getAttribute("LoginUser")).getId();
-		//调用业务层方法
+		User user =(User) session.getAttribute("LoginUser");
 		WordService service = new WordService();
-		String json = service.queryWords(userId);
-
+		String json = null;
+		if(user!=null) {
+			int userId = user.getId();
+			json = service.queryWords(userId);
+		} else {
+			json = service.queryAllWords();
+		}
+		//调用业务层方法
 		response.getWriter().println(json);
 	}
 

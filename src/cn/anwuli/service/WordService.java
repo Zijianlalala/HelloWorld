@@ -23,6 +23,11 @@ public class WordService {
 		}
 		return ObjectToString.toString(allWords);
 	}
+	//返回无收藏的所有单词
+	public String queryAllWords() {
+		List<Word> allWords = WordDao.queryWords();
+		return ObjectToString.toString(allWords);
+	}
 	//返回收藏列表
 	public List<Word> queryCollection(int userId) {
 		List<Word> list = new ArrayList<>();

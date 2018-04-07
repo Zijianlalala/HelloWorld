@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
 		} else {
 			//登录失败 用户名或密码输入错误
-			request.getRequestDispatcher("index.html").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 		}
 	
 	}
