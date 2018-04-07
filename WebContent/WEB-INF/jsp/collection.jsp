@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +9,7 @@
 	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>个人中心</title>
+<title>我的收藏</title>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -26,25 +27,18 @@
 	</nav>
 	<div class="container">
 		<div class="panel panel-primary">
-			<div class="panel-heading">个人中心</div>
+			<div class="panel-heading">我的收藏</div>
 			<table class="table">
 				<tbody>
+					<c:forEach items="${requestScope.collection }" var="item">
 					<tr>
-						<td>用户名</td>
-						<td>${sessionScope.LoginUser.username }</td>
+						<td>${item.content }</td>
+						<td>${item.translation }</td>
 					</tr>
-					<tr>
-						<td>昵称</td>
-						<td>${sessionScope.LoginUser.nickname }</td>
-					</tr>
-					<tr>
-						<td><a href="Collection.action" class="btn btn-info">我的收藏</a></td>
-						<td></td>
-					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<a href="Info.action?type=2" class="btn btn-primary">修改信息</a>
 	</div>
 	<br>
 	<div class="container">

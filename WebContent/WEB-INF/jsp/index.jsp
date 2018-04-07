@@ -64,7 +64,16 @@
             showWord();
             
         });
+        /* 显示下一个单词 */
         function showWord() {
+            
+            /* 根据本地的单词对象中的是否被收藏的属性来判断是否显示收藏按钮 */
+            if(result[i].isCollected == true) {
+				/* 隐藏按钮 */
+            		disableMark();
+            } else {
+				enableMark();
+            }
             $("#word-content").html(result[i].content);
             $("#word-translation").html(result[i].translation);
         }
@@ -72,17 +81,29 @@
         $('button#mark').on('click', function(){
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8080/HelloWorld/TestServlet',
+                url: 'http://localhost:8080/HelloWorld/addCollection.action',
                 data: {id : result[i].id},
-                success: function(){
-                    $('button#mark').attr('disabled', 'true');
-                    $('button#mark').html('已收藏');
+                success: function() {
+					disableMark();
+					result[i].isCollected = true;	
                 }
             });
         });
+
+        /* 重置收藏按钮 */
+        function enableMark() {
+        		$('button#mark').removeAttr('disabled');
+           	 $('button#mark').html('收藏');
+            }
+        /* 禁止收藏按钮 */
+        function disableMark(){
+            $('button#mark').attr('disabled', 'true');
+            $('button#mark').html('已收藏');
+        }
+        
     </script>
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

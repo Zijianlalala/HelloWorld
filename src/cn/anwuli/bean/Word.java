@@ -4,6 +4,15 @@ public class Word {
 	private int id;
 	private String content;
 	private String translation;
+	private boolean isCollected;
+	
+	
+	public boolean isCollected() {
+		return isCollected;
+	}
+	public void setCollected(boolean isCollected) {
+		this.isCollected = isCollected;
+	}
 	public int getId() {
 		return id;
 	}
@@ -24,8 +33,10 @@ public class Word {
 	}
 	@Override
 	public String toString() {
-		return "Word [id=" + id + ", content=" + content + ", translation=" + translation + "]";
+		return "Word [id=" + id + ", content=" + content + ", translation=" + translation + ", isCollected="
+				+ isCollected + "]";
 	}
+	
 	
 	
 }

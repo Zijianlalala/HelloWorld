@@ -15,4 +15,13 @@
     select ID,CONTENT,TRANSLATION from WORDS
   </select>
 
+	<select id="queryCollectedWords" parameterType="int" resultMap="WordResult">
+		select w.ID,CONTENT,TRANSLATION from WORDS as w join NOTES as n 
+		where n.USER_ID = #{id} and w.ID = n.WORD_ID
+	</select>
+	
+	<insert id="addCollectionWord" parameterType="int">
+		insert into NOTES (USER_ID, WORD_ID) 
+		values(#{userID}, #{wordID});
+	</insert>
 </mapper>

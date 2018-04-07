@@ -10,31 +10,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-
 import cn.anwuli.bean.User;
 import cn.anwuli.bean.Word;
 import cn.anwuli.service.WordService;
 
 /**
- * Servlet implementation class WordListServlet
+ * Servlet implementation class CollectionServlet
  */
-@WebServlet("/WordListServlet")
-public class WordListServlet extends HttpServlet {
+@WebServlet("/Collection.action")
+public class CollectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession();
 		int userId = ((User) session.getAttribute("LoginUser")).getId();
 		//调用业务层方法
 		WordService service = new WordService();
-		String json = service.queryWords(userId);
-
-		response.getWriter().println(json);
+		List<Word> collection = service.queryCollection(userId);
+		request.setAttribute("collection", collection);
+		request.getRequestDispatcher("/WEB-INF/jsp/collection.jsp").forward(request, response);
+		
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
