@@ -1,5 +1,7 @@
 # HelloWorld
-[每日十词](http://anwuli.cn:8080/HelloWorld)
+[每日十词](http://anwuli.cn/HelloWorld)
+测试账号用户名：admin
+测试账号密码：123456
 
 ## 已实现
 * 用户登录
