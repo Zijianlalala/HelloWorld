@@ -1,5 +1,4 @@
 # HelloWorld
-[每日十词](http://anwuli.cn/HelloWorld)
 
 测试账号用户名：admin
 
